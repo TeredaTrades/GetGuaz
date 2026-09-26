@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guaz — carry for someone, get paid for it</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --navy:#17233A;
+    --navy-2:#1F304C;
+    --cream:#F3EEE1;
+    --brass:#B98B3E;
+    --red:#9C3B2E;
+    --line: rgba(243,238,225,0.18);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-padding-top: env(safe-area-inset-top,0px);}
+  body{
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    padding-top: env(safe-area-inset-top,0px);
+    padding-bottom: env(safe-area-inset-bottom,0px);
+    line-height: 1.55;
+  }
+  h1,h2,.tag-route{ font-family:'Zilla Slab', serif; }
+  .wrap{ max-width: 920px; margin:0 auto; padding: 0 28px; }
+
+  /* HERO — luggage tag */
+  header.hero{ padding: 64px 0 40px; }
+  .tag{
+    background: var(--cream);
+    color: var(--navy);
+    border-radius: 14px;
+    position: relative;
+    padding: 48px 40px 44px;
+    max-width: 620px;
+    margin: 0 auto;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+  }
+  .tag::before{ /* string loop */
+    content:"";
+    position:absolute;
+    top:-34px; left:50%;
+    transform: translateX(-50%);
+    width:46px; height:46px;
+    border: 6px solid var(--brass);
+    border-radius:50%;
+    background: var(--navy);
+  }
+  .tag::after{ /* punch hole */
+    content:"";
+    position:absolute;
+    top:-14px; left:50%;
+    transform: translateX(-50%);
+    width:14px; height:14px;
+    border-radius:50%;
+    background: var(--navy);
+  }
+  .perf{
+    position:absolute; top:0; bottom:0; right:-1px;
+    width:26px;
+    background-image: radial-gradient(circle, var(--navy) 4px, transparent 4.5px);
+    background-size: 26px 24px;
+    background-position: center;
+  }
+  .tag-route{
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    color: var(--red);
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .tag h1{
+    font-size: clamp(2.1rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.08;
+    max-width: 15ch;
+  }
+  .tag p.sub{
+    margin-top: 18px;
+    font-size: 1.05rem;
+    max-width: 42ch;
+    color: #3B4A61;
+  }
+  .cta-row{
+    display:flex; gap:14px; flex-wrap:wrap;
+    margin-top: 30px;
+  }
+  .btn{
+    display:inline-block;
+    padding: 13px 22px;
+    border-radius: 8px;
+    font-weight:600;
+    font-size: 0.98rem;
+    text-decoration:none;
+    border: 2px solid transparent;
+  }
+  .btn-primary{ background: var(--red); color: var(--cream); }
+  .btn-secondary{ background:transparent; border-color: var(--navy); color: var(--navy); }
+  .hero-note{
+    text-align:center;
+    max-width: 480px;
+    margin: 26px auto 0;
+    font-size: 0.92rem;
+    color: #B9C2D2;
+  }
+
+  /* HOW IT WORKS */
+  section.steps{ padding: 70px 0 40px; border-top: 1px solid var(--line); }
+  section.steps h2{ font-size: 1.9rem; margin-bottom: 34px; max-width: 20ch; }
+  .step-list{ display:flex; flex-direction:column; gap: 0; }
+  .step{
+    display:grid;
+    grid-template-columns: 52px 1fr;
+    gap: 18px;
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step:last-child{ border-bottom: 1px solid var(--line); }
+  .step .num{
+    font-family:'Zilla Slab', serif;
+    font-size: 1.6rem;
+    color: var(--brass);
+    font-weight:700;
+  }
+  .step h3{ font-size: 1.08rem; margin-bottom: 6px; }
+  .step p{ color:#B9C2D2; font-size: 0.97rem; max-width: 56ch; }
+
+  /* TRUST */
+  section.trust{ padding: 56px 0; border-top: 1px solid var(--line); }
+  .trust-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .trust-card{
+    background: var(--navy-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 22px 24px;
+  }
+  .trust-card h3{ font-size:1rem; margin-bottom:8px; color: var(--brass); font-family: 'Inter', sans-serif; font-weight:600; }
+  .trust-card p{ font-size:0.93rem; color:#B9C2D2; }
+
+  /* WAITLIST */
+  section.join{
+    padding: 64px 0 80px;
+    border-top: 1px solid var(--line);
+    text-align:center;
+  }
+  section.join h2{ font-size:1.8rem; max-width: 22ch; margin: 0 auto 14px; }
+  section.join p{ color:#B9C2D2; max-width:48ch; margin:0 auto 28px; }
+  .route-toggle{
+    display:inline-flex; gap:8px; margin-bottom: 30px;
+    background: var(--navy-2);
+    padding: 6px; border-radius: 999px;
+    border: 1px solid var(--line);
+  }
+  .route-toggle span{
+    padding: 8px 18px; border-radius: 999px; font-size: 0.88rem; color:#8695AC;
+  }
+  .route-toggle span.active{ background: var(--brass); color: var(--navy); font-weight:600; }
+
+  footer{
+    padding: 30px 0 50px;
+    text-align:center;
+    color:#7C8AA0;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 620px){
+    .trust-grid{ grid-template-columns: 1fr; }
+    .tag{ padding: 40px 24px 36px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="tag">
+      <div class="perf"></div>
+      <div class="tag-route">DXB &rarr; ADD</div>
+      <h1>You've got bag space. Someone needs it.</h1>
+      <p class="sub">Guaz connects travelers with unused checked-luggage allowance to people who need something carried — and pays the traveler for the trip they're already taking.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:hello@getguaz.com?subject=Guaz%20early%20access">Get early access</a>
+        <a class="btn btn-secondary" href="#how">See how it works</a>
+      </div>
+    </div>
+    <p class="hero-note">Starting on the Dubai &harr; Addis Ababa route. More routes as it grows.</p>
+  </div>
+</header>
+
+<section class="steps" id="how">
+  <div class="wrap">
+    <h2>How a trip pays for itself</h2>
+    <div class="step-list">
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h3>A sender lists what they need carried</h3>
+          <p>What it is, its value, and whether it's fragile or electronic — so a traveler knows exactly what they're agreeing to before they say yes.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div>
+          <h3>A traveler with the spare allowance takes it</h3>
+          <p>Only verified travelers with ID, a selfie, and either a vouching referrer or a value-matched deposit can accept a job.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div>
+          <h3>Delivery confirmed, traveler paid</h3>
+          <p>Payment lands once the item is actually handed over on the Addis side — not before.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-card">
+        <h3>Every traveler is verified</h3>
+        <p>ID, passport, phone number, and a selfie — before anyone is trusted with someone else's belongings.</p>
+      </div>
+      <div class="trust-card">
+        <h3>Reputation follows you</h3>
+        <p>Completed jobs build a rating. Vanishing with an item ends your ability to take more — and costs whoever vouched for you, too.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="join">
+  <div class="wrap">
+    <div class="route-toggle">
+      <span class="active">I'm sending something</span>
+      <span>I'm traveling with space</span>
+    </div>
+    <h2>Be first on the route when we open it up</h2>
+    <p>Guaz is opening on the Dubai&ndash;Addis Ababa corridor first. Tell us which side you're on and we'll reach out when it's ready.</p>
+    <a class="btn btn-primary" href="mailto:hello@getguaz.com?subject=Guaz%20waitlist&body=I'm%20a%20(sender%20/%20traveler)%20on%20the%20Dubai-Addis%20route.">Join the waitlist</a>
+  </div>
+</section>
+
+<footer>
+  Guaz &middot; Dubai &harr; Addis Ababa &middot; getguaz.com
+</footer>
+
+</body>
+</html>
