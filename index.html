@@ -159,8 +159,14 @@
   }
   .route-toggle span{
     padding: 8px 18px; border-radius: 999px; font-size: 0.88rem; color:#8695AC;
+    cursor: pointer; user-select: none; transition: background 0.15s, color 0.15s;
   }
+  .route-toggle span:hover{ color: var(--cream); }
   .route-toggle span.active{ background: var(--brass); color: var(--navy); font-weight:600; }
+
+  /* FLIGHT PATH */
+  .flight-path{ max-width: 640px; margin: 30px auto 0; opacity: 0.95; }
+  .flight-path svg{ width: 100%; height: auto; display:block; }
 
   footer{
     padding: 30px 0 50px;
@@ -189,6 +195,16 @@
         <a class="btn btn-primary" href="mailto:hello@getguaz.com?subject=Guaz%20early%20access">Get early access</a>
         <a class="btn btn-secondary" href="#how">See how it works</a>
       </div>
+    </div>
+    <div class="flight-path" aria-hidden="true">
+      <svg viewBox="0 0 700 130" xmlns="http://www.w3.org/2000/svg">
+        <path d="M90,95 Q350,15 610,95" fill="none" stroke="var(--brass)" stroke-width="2" stroke-dasharray="6 8"/>
+        <circle cx="90" cy="95" r="6" fill="var(--brass)"/>
+        <circle cx="610" cy="95" r="6" fill="var(--red)"/>
+        <text x="90" y="118" text-anchor="middle" font-size="13" fill="#B9C2D2" font-family="Inter, sans-serif" font-weight="600">DXB</text>
+        <text x="610" y="118" text-anchor="middle" font-size="13" fill="#B9C2D2" font-family="Inter, sans-serif" font-weight="600">ADD</text>
+        <text x="350" y="55" text-anchor="middle" font-size="26">&#9992;&#65039;</text>
+      </svg>
     </div>
     <p class="hero-note">Starting on the Dubai &harr; Addis Ababa route. More routes as it grows.</p>
   </div>
@@ -240,13 +256,13 @@
 
 <section class="join">
   <div class="wrap">
-    <div class="route-toggle">
-      <span class="active">I'm sending something</span>
-      <span>I'm traveling with space</span>
+    <div class="route-toggle" role="group" aria-label="Which side are you on">
+      <span class="active" id="opt-sender" role="button" tabindex="0">I'm sending something</span>
+      <span id="opt-traveler" role="button" tabindex="0">I'm traveling with space</span>
     </div>
     <h2>Be first on the route when we open it up</h2>
     <p>Guaz is opening on the Dubai&ndash;Addis Ababa corridor first. Tell us which side you're on and we'll reach out when it's ready.</p>
-    <a class="btn btn-primary" href="mailto:hello@getguaz.com?subject=Guaz%20waitlist&body=I'm%20a%20(sender%20/%20traveler)%20on%20the%20Dubai-Addis%20route.">Join the waitlist</a>
+    <a class="btn btn-primary" id="waitlist-cta" href="mailto:hello@getguaz.com?subject=Guaz%20waitlist%20-%20sender&body=I'm%20sending%20something%20on%20the%20Dubai-Addis%20route.">Join the waitlist</a>
   </div>
 </section>
 
@@ -254,6 +270,29 @@
   Guaz &middot; Dubai &harr; Addis Ababa &middot; getguaz.com
 </footer>
 
+<script>
+(function(){
+  var senderBtn = document.getElementById('opt-sender');
+  var travelerBtn = document.getElementById('opt-traveler');
+  var cta = document.getElementById('waitlist-cta');
+  function setRole(role){
+    if(role === 'sender'){
+      senderBtn.classList.add('active'); travelerBtn.classList.remove('active');
+      cta.href = "mailto:hello@getguaz.com?subject=Guaz%20waitlist%20-%20sender&body=I'm%20sending%20something%20on%20the%20Dubai-Addis%20route.";
+    } else {
+      travelerBtn.classList.add('active'); senderBtn.classList.remove('active');
+      cta.href = "mailto:hello@getguaz.com?subject=Guaz%20waitlist%20-%20traveler&body=I'm%20traveling%20with%20spare%20luggage%20space%20on%20the%20Dubai-Addis%20route.";
+    }
+  }
+  senderBtn.addEventListener('click', function(){ setRole('sender'); });
+  travelerBtn.addEventListener('click', function(){ setRole('traveler'); });
+  [senderBtn, travelerBtn].forEach(function(el, i){
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); setRole(i === 0 ? 'sender' : 'traveler'); }
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
-<!-- redeploy trigger Sun Sep 27 20:37:37 UTC 2026 -->
