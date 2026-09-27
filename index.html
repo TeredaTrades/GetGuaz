@@ -168,12 +168,41 @@
   .flight-path{ max-width: 640px; margin: 30px auto 0; opacity: 0.95; }
   .flight-path svg{ width: 100%; height: auto; display:block; }
 
-  footer{
-    padding: 30px 0 50px;
-    text-align:center;
-    color:#7C8AA0;
-    font-size: 0.85rem;
+  .site-nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 20px 0;
+  }
+  .site-nav .brand{ font-family:'Zilla Slab', serif; font-weight:700; font-size:1.2rem; color: var(--cream); }
+  .site-nav a{ color:#B9C2D2; text-decoration:none; font-size:0.92rem; margin-left:22px; }
+  .site-nav a:hover{ color: var(--cream); }
+
+  footer.site-footer{
+    padding: 44px 0 40px;
     border-top: 1px solid var(--line);
+    color:#8695AC;
+    font-size: 0.85rem;
+  }
+  .footer-grid{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px;
+    margin-bottom: 26px;
+  }
+  .footer-social a{ color:#B9C2D2; text-decoration:none; margin-left:16px; font-size:0.88rem; }
+  .footer-social a:first-child{ margin-left:0; }
+  .footer-social a:hover{ color: var(--cream); }
+  .ad-slot{
+    border: 1px dashed var(--line);
+    border-radius: 8px;
+    padding: 14px;
+    text-align:center;
+    font-size: 0.78rem;
+    color:#5F6E85;
+    margin-bottom: 26px;
+  }
+  .footer-disclaimer{
+    font-size: 0.78rem;
+    color:#5F6E85;
+    max-width: 640px;
+    line-height:1.6;
   }
 
   @media (max-width: 620px){
@@ -183,6 +212,14 @@
 </style>
 </head>
 <body>
+
+<nav class="site-nav wrap">
+  <span class="brand">Guaz</span>
+  <div>
+    <a href="#how">How it works</a>
+    <a href="#join">Join waitlist</a>
+  </div>
+</nav>
 
 <header class="hero">
   <div class="wrap">
@@ -206,7 +243,6 @@
         <text x="350" y="55" text-anchor="middle" font-size="26">&#9992;&#65039;</text>
       </svg>
     </div>
-    <p class="hero-note">Starting on the Dubai &harr; Addis Ababa route. More routes as it grows.</p>
   </div>
 </header>
 
@@ -248,13 +284,13 @@
       </div>
       <div class="trust-card">
         <h3>Reputation follows you</h3>
-        <p>Completed jobs build a rating. Vanishing with an item ends your ability to take more — and costs whoever vouched for you, too.</p>
+        <p>Completed jobs build a rating. Vanishing with an item ends your ability to take more, forfeits your security deposit, and costs whoever vouched for you, too.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="join">
+<section class="join" id="join">
   <div class="wrap">
     <div class="route-toggle" role="group" aria-label="Which side are you on">
       <span class="active" id="opt-sender" role="button" tabindex="0">I'm sending something</span>
@@ -266,8 +302,19 @@
   </div>
 </section>
 
-<footer>
-  Guaz &middot; Dubai &harr; Addis Ababa &middot; getguaz.com
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ad-slot">Ad space</div>
+    <div class="footer-grid">
+      <span>Guaz &middot; Dubai &harr; Addis Ababa &middot; getguaz.com</span>
+      <div class="footer-social">
+        <a href="#">X</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+    <p class="footer-disclaimer">Guaz is in pre-launch. Nothing on this page is an offer to carry, ship, or transport goods, and no items should be exchanged through Guaz until the service is formally live. Verification, deposit, and rating mechanics described here are subject to change before launch.</p>
+  </div>
 </footer>
 
 <script>
