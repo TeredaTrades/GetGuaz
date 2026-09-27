@@ -217,7 +217,7 @@
   <span class="brand">Guaz</span>
   <div>
     <a href="#how">How it works</a>
-    <a href="#join">Join waitlist</a>
+    <a href="#join">Get started</a>
   </div>
 </nav>
 
@@ -229,7 +229,7 @@
       <h1>You've got bag space. Someone needs it.</h1>
       <p class="sub">Guaz connects travelers with unused checked-luggage allowance to people who need something carried — and pays the traveler for the trip they're already taking.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="mailto:hello@getguaz.com?subject=Guaz%20early%20access">Get early access</a>
+        <a class="btn btn-primary" href="https://getguaz.com/app/">Get early access</a>
         <a class="btn btn-secondary" href="#how">See how it works</a>
       </div>
     </div>
@@ -296,9 +296,9 @@
       <span class="active" id="opt-sender" role="button" tabindex="0">I'm sending something</span>
       <span id="opt-traveler" role="button" tabindex="0">I have spare luggage space</span>
     </div>
-    <h2>Be first on the route when we open it up</h2>
-    <p>Guaz is opening on the Dubai&ndash;Addis Ababa corridor first. Tell us which side you're on and we'll reach out when it's ready.</p>
-    <a class="btn btn-primary" id="waitlist-cta" href="mailto:hello@getguaz.com?subject=Guaz%20waitlist%20-%20sender&body=I'm%20sending%20something%20on%20the%20Dubai-Addis%20route.">Join the waitlist</a>
+    <h2>Create your account</h2>
+    <p>Tell us which side you're on and sign up — every account is reviewed by hand before it can accept a job, so it may take a moment before you're fully verified.</p>
+    <a class="btn btn-primary" id="waitlist-cta" href="https://getguaz.com/app/">Create account</a>
   </div>
 </section>
 
@@ -313,7 +313,7 @@
         <a href="#">TikTok</a>
       </div>
     </div>
-    <p class="footer-disclaimer">Guaz is in pre-launch. Nothing on this page is an offer to carry, ship, or transport goods, and no items should be exchanged through Guaz until the service is formally live. Verification, deposit, and rating mechanics described here are subject to change before launch.</p>
+    <p class="footer-disclaimer">Guaz is in early access. Verification is manual, deposit and payout handling is still evolving, and features described here may change before general launch.</p>
   </div>
 </footer>
 
@@ -321,14 +321,11 @@
 (function(){
   var senderBtn = document.getElementById('opt-sender');
   var travelerBtn = document.getElementById('opt-traveler');
-  var cta = document.getElementById('waitlist-cta');
   function setRole(role){
     if(role === 'sender'){
       senderBtn.classList.add('active'); travelerBtn.classList.remove('active');
-      cta.href = "mailto:hello@getguaz.com?subject=Guaz%20waitlist%20-%20sender&body=I'm%20sending%20something%20on%20the%20Dubai-Addis%20route.";
     } else {
       travelerBtn.classList.add('active'); senderBtn.classList.remove('active');
-      cta.href = "mailto:hello@getguaz.com?subject=Guaz%20waitlist%20-%20traveler&body=I'm%20traveling%20with%20spare%20luggage%20space%20on%20the%20Dubai-Addis%20route.";
     }
   }
   senderBtn.addEventListener('click', function(){ setRole('sender'); });
